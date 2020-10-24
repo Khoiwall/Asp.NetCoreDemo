@@ -17,6 +17,7 @@ namespace eShopSolution.Data.EF
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            //Configure using Fluent API
             modelBuilder.ApplyConfiguration(new CartConfiguration());
 
             modelBuilder.ApplyConfiguration(new AppConfigConfiguration());
@@ -31,13 +32,15 @@ namespace eShopSolution.Data.EF
             modelBuilder.ApplyConfiguration(new LanguageConfiguration());
             modelBuilder.ApplyConfiguration(new ProductTranslationConfiguration());
             modelBuilder.ApplyConfiguration(new PromotionConfiguration());
-            modelBuilder.ApplyConfiguration(new TransactionConfiguration());
+            modelBuilder.ApplyConfiguration(new TransactionConfiguration()); 
 
-            modelBuilder.ApplyConfiguration(new AppUserConfiguration());
-            modelBuilder.ApplyConfiguration(new AppRoleConfiguration());
-            modelBuilder.ApplyConfiguration(new ProductImageConfiguration());
-            modelBuilder.ApplyConfiguration(new SlideConfiguration());
-            base.OnModelCreating(modelBuilder);
+            //Data seeding
+            /*modelBuilder.Entity<AppConfig>().HasData(
+                new AppConfig() { Key = "HomeTitle", Value="This is page of eShopSolutio"},
+                new AppConfig() { Key = "HomeKeyWord", Value = "This is keyword of eShopSolutio" },
+                new AppConfig() { Key = "HomeTitle", Value = "This is description of eShopSolutio" }
+            );do cach nay dai nen khong su dung nen ta phai tao mot foulder Extension de chua nhung noi dung nay */
+            //base.OnModelCreating(modelBuilder);
         }
 
         public DbSet<Product> Products { get; set; }
@@ -62,9 +65,5 @@ namespace eShopSolution.Data.EF
         public DbSet<Promotion> Promotions { get; set; }
 
         public DbSet<Transaction> Transactions { get; set; }
-
-        public DbSet<ProductImage> ProductImages { get; set; }
-
-        public DbSet<Slide> Slides { get; set; }
     }
 }
