@@ -1,6 +1,7 @@
 ﻿using Demo.Data.Configurations;
 using eShopSolution.Data.Configurations;
 using eShopSolution.Data.Entities;
+using eShopSolution.Data.Extensions;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -32,7 +33,7 @@ namespace eShopSolution.Data.EF
             modelBuilder.ApplyConfiguration(new LanguageConfiguration());
             modelBuilder.ApplyConfiguration(new ProductTranslationConfiguration());
             modelBuilder.ApplyConfiguration(new PromotionConfiguration());
-            modelBuilder.ApplyConfiguration(new TransactionConfiguration()); 
+            modelBuilder.ApplyConfiguration(new TransactionConfiguration());
 
             //Data seeding
             /*modelBuilder.Entity<AppConfig>().HasData(
@@ -40,6 +41,7 @@ namespace eShopSolution.Data.EF
                 new AppConfig() { Key = "HomeKeyWord", Value = "This is keyword of eShopSolutio" },
                 new AppConfig() { Key = "HomeTitle", Value = "This is description of eShopSolutio" }
             );do cach nay dai nen khong su dung nen ta phai tao mot foulder Extension de chua nhung noi dung nay */
+            modelBuilder.Seed();
             //base.OnModelCreating(modelBuilder);
         }
 
