@@ -1,4 +1,5 @@
-﻿using eShopSolution.Data.Enums;
+﻿using Demo.Data.Entities;
+using eShopSolution.Data.Enums;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -18,6 +19,8 @@ namespace eShopSolution.Data.Entities
         public string Provider { set; get; }
 
         public Guid UserId { get; set; }
+
+        public AppUser AppUser { get; set; }
 
     }
 }
